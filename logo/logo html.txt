@@ -1,0 +1,69 @@
+HTML
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Modelos Logo ZURIMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos base comunes para el logo */
+        .logo-zurima {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500; /* Peso intermedio y elegante como la referencia */
+            text-transform: uppercase;
+            font-size: 48px;  /* Ajustable a lo que necesites */
+            letter-spacing: 2px; /* Espaciado limpio entre letras */
+            display: inline-block;
+            background: transparent;
+            margin: 20px;
+        }
+
+        /* OPCIÓN 1: Dorado Metálico Degradado */
+        .modelo-oro {
+            background: linear-gradient(135deg, #f3e71a 0%, #e3a831 50%, #946714 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* OPCIÓN 2: Negro Sólido Premium */
+        .modelo-negro {
+            color: #111111;
+        }
+
+        /* OPCIÓN 3: Oro Viejo / Champagne */
+        .modelo-oro-viejo {
+            background: linear-gradient(135deg, #dfba6b 0%, #b38b43 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Vista previa en caja oscura para los dorados */
+        .preview-dark {
+            background-color: #0f1115;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preview-dark">
+        <h1 class="logo-zurima modelo-oro">ZURIMA</h1>
+    </div>
+
+    <br><br>
+
+    <h1 class="logo-zurima modelo-negro">ZURIMA</h1>
+
+    <br><br>
+
+    <div class="preview-dark">
+        <h1 class="logo-zurima modelo-oro-viejo">ZURIMA</h1>
+    </div>
+
+</body>
+</html>

@@ -85,8 +85,6 @@ body {
 .section-head,
 .hl,
 .tl__body,
-.booking__lead,
-.booking__contact,
 .footer {
   box-shadow: 0 0 0 var(--scrim-spread) var(--scrim);
   border-radius: var(--scrim-radius);
@@ -255,6 +253,7 @@ h3 {
   height: 100%;
   z-index: -1;
   overflow: hidden;
+  box-shadow: 0 0 140px 30px rgba(234, 189, 101, 0.32);
 }
 
 .hero__media img {
@@ -298,7 +297,11 @@ h3 {
   font-weight: 700;
   letter-spacing: 0.04em;
   line-height: 0.95;
-  background: var(--gold-grad);
+  background:
+    linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, 0.85) 50%, transparent 60%) no-repeat,
+    var(--gold-grad) no-repeat;
+  background-size: 300% 100%, 100% 100%;
+  background-position: -120% 0, 0 0;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -353,7 +356,7 @@ h3 {
 }
 
 .marquee {
-  animation: marquee-glint 1100ms var(--ease) 200ms both;
+  animation: marquee-glint 1100ms var(--ease) 200ms both, marquee-shine 4s ease-in-out 1.2s infinite;
 }
 
 @keyframes marquee-glint {
@@ -364,6 +367,18 @@ h3 {
   to {
     filter: drop-shadow(0 4px 30px rgba(234, 189, 101, 0.22));
     opacity: 1;
+  }
+}
+
+@keyframes marquee-shine {
+  0% {
+    background-position: -120% 0, 0 0;
+  }
+  55% {
+    background-position: 120% 0, 0 0;
+  }
+  100% {
+    background-position: 120% 0, 0 0;
   }
 }
 
@@ -397,6 +412,7 @@ h3 {
   width: 100%;
   border-radius: 3px;
   filter: grayscale(0.15) contrast(1.02);
+  box-shadow: 0 0 70px 6px rgba(234, 189, 101, 0.28);
 }
 
 /* .about__media::after {
@@ -660,7 +676,7 @@ html.js .reveal.is-visible {
 
 .tl--plain {
   grid-template-columns: 1fr;
-  padding: var(--sp-1) 0;
+  padding: var(--sp-2) 0;
 }
 
 .tl:last-child {
@@ -690,6 +706,8 @@ html.js .reveal.is-visible {
 .career__photos {
   display: grid;
   gap: var(--sp-3);
+  border-radius: 3px;
+  box-shadow: 0 0 70px 6px rgba(234, 189, 101, 0.28);
 }
 
 .career__photos img {
@@ -706,9 +724,18 @@ html.js .reveal.is-visible {
 }
 
 .edu__item {
-  padding-left: var(--sp-3);
-  border-left: 2px solid var(--gold-deep);
+  position: relative;
+  padding-left: var(--sp-4);
   color: var(--text-dim);
+}
+
+.edu__item::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  color: var(--gold-deep);
+  font-size: 0.9em;
 }
 
 /* ---------- Booking ---------- */

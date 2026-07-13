@@ -231,11 +231,11 @@ h3 {
 
 .hero__media img {
   position: absolute;
-  width: 125%;
+  width: 155%;
   max-width: none;
-  height: 125%;
-  top: -14%;
-  left: -12.5%;
+  height: 155%;
+  top: -21%;
+  left: -22%;
   object-fit: cover;
 }
 
@@ -612,7 +612,7 @@ html.js .reveal.is-visible {
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: var(--sp-4);
-  padding: var(--sp-4) 0;
+  padding: var(--sp-3) 0;
   border-top: 1px solid var(--line);
 }
 
@@ -651,31 +651,12 @@ html.js .reveal.is-visible {
   filter: contrast(1.03);
 }
 
-.career__extra {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.career__extra > div {
-  padding: var(--sp-4) 0;
-  border-top: 1px solid var(--line);
-}
-
-.career__extra > div:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.career__subtitle {
-  font-size: var(--fs-h3);
-  margin-bottom: var(--sp-3);
-}
-
 .chips {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-2);
+  margin-top: 0.3em;
 }
 
 .chip {
@@ -690,6 +671,7 @@ html.js .reveal.is-visible {
   list-style: none;
   display: grid;
   gap: var(--sp-3);
+  margin-top: 0.3em;
 }
 
 .edu__item {
@@ -774,8 +756,7 @@ html.js .reveal.is-visible {
     grid-template-columns: 1fr;
   }
 
-  .career__main,
-  .career__extra {
+  .career__main {
     grid-template-columns: 1fr;
   }
 

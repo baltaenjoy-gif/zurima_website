@@ -599,6 +599,7 @@ html.js .reveal.is-visible {
 
 .career__main--reverse {
   grid-template-columns: 0.7fr 1.3fr;
+  align-items: start;
 }
 
 .timeline {

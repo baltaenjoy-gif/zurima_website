@@ -59,7 +59,7 @@ function renderContent() {
       .join('')
   )
 
-  setHtml('skills', content.skills.map((s) => `<li class="chip">${pick(s)}</li>`).join(''))
+  setHtml('skills', content.skills.map((s) => `<li class="edu__item">${pick(s)}</li>`).join(''))
   setHtml('education', content.education.map((e) => `<li class="edu__item">${pick(e)}</li>`).join(''))
 
   const c = content.contact

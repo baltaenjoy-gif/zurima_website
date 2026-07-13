@@ -617,6 +617,10 @@ html.js .reveal.is-visible {
   border-top: 1px solid var(--line);
 }
 
+.tl--plain {
+  grid-template-columns: 1fr;
+}
+
 .tl:last-child {
   border-bottom: 1px solid var(--line);
 }
@@ -650,22 +654,6 @@ html.js .reveal.is-visible {
   width: 100%;
   border-radius: 3px;
   filter: contrast(1.03);
-}
-
-.chips {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2);
-  margin-top: 0.3em;
-}
-
-.chip {
-  padding: 0.5em 1em;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-size: var(--fs-caption);
-  color: var(--text);
 }
 
 .edu {

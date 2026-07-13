@@ -903,8 +903,23 @@ html.js .reveal.is-visible {
   }
 
   .hero__content {
+    position: relative;
+    isolation: isolate;
     box-shadow: none;
     padding-block: 0 var(--sp-6);
+  }
+
+  .hero__content::before {
+    content: '';
+    position: absolute;
+    inset: -8% -12%;
+    z-index: -1;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(13, 13, 13, 0.16);
+    -webkit-mask-image: radial-gradient(ellipse 85% 80% at 42% 68%, #000 45%, transparent 92%);
+    mask-image: radial-gradient(ellipse 85% 80% at 42% 68%, #000 45%, transparent 92%);
+    pointer-events: none;
   }
 
   .hero__tagline {

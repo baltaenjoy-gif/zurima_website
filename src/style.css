@@ -912,13 +912,16 @@ html.js .reveal.is-visible {
   .hero__content::before {
     content: '';
     position: absolute;
-    inset: -8% -12%;
+    top: 0;
+    bottom: 0;
+    left: calc(-1 * var(--gutter));
+    right: calc(-1 * var(--gutter));
     z-index: -1;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     background: rgba(13, 13, 13, 0.06);
-    -webkit-mask-image: radial-gradient(ellipse 85% 80% at 42% 68%, #000 45%, transparent 92%);
-    mask-image: radial-gradient(ellipse 85% 80% at 42% 68%, #000 45%, transparent 92%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 65% at 50% 115%, #000 55%, transparent 100%);
+    mask-image: radial-gradient(ellipse 90% 65% at 50% 115%, #000 55%, transparent 100%);
     pointer-events: none;
   }
 
@@ -930,14 +933,14 @@ html.js .reveal.is-visible {
   .btn::before {
     content: '';
     position: absolute;
-    inset: -10px -14px;
+    inset: -3px -6px;
     z-index: -1;
-    border-radius: 6px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    background: rgba(13, 13, 13, 0.2);
-    -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 65%, transparent 100%);
-    mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 65%, transparent 100%);
+    border-radius: 4px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(13, 13, 13, 0.22);
+    -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 70%, transparent 100%);
     pointer-events: none;
   }
 

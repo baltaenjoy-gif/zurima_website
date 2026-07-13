@@ -879,8 +879,6 @@ html.js .reveal.is-visible {
 
   .hero__media img {
     object-position: center 25%;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), #000 65%);
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), #000 65%);
   }
 
   .hero__content {
@@ -928,7 +926,8 @@ html.js .reveal.is-visible {
   .highlights {
     flex-wrap: nowrap;
     gap: var(--sp-3);
-    justify-content: space-between;
+    justify-content: flex-start;
+    padding-left: 0;
     margin-bottom: var(--sp-8);
   }
 

@@ -40,6 +40,11 @@
   /* Motion */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --dur: 320ms;
+
+  /* Scrim de legibilidad sobre las luces de fondo */
+  --scrim: rgba(13, 13, 13, 0.42);
+  --scrim-spread: clamp(0.6rem, 2vw, 1.1rem);
+  --scrim-radius: 6px;
 }
 
 *,
@@ -65,11 +70,26 @@ body {
 }
 
 .bg-lights {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: -1;
   pointer-events: none;
   display: block;
+}
+
+/* ---------- Scrim de legibilidad por segmento de texto ---------- */
+.hero__content,
+.hero__scroll,
+.about__content,
+.section-head,
+.hl,
+.tl__body,
+.booking__lead,
+.booking__contact,
+.footer {
+  box-shadow: 0 0 0 var(--scrim-spread) var(--scrim);
+  border-radius: var(--scrim-radius);
 }
 
 img {

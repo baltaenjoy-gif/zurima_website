@@ -42,6 +42,17 @@ function alphaFor(light, t) {
   return 0
 }
 
+function pageSize() {
+  return {
+    w: document.documentElement.clientWidth,
+    h: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight),
+  }
+}
+
+function lightCountFor(w, h) {
+  return Math.min(700, Math.max(150, Math.floor((w * h) / 9000)))
+}
+
 export function initBgLights() {
   const canvas = document.getElementById('bg-lights')
   if (!canvas) return
@@ -49,55 +60,80 @@ export function initBgLights() {
   const ctx = canvas.getContext('2d')
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  const lightCount = Math.min(140, Math.max(60, Math.floor((window.innerWidth * window.innerHeight) / 9000)))
-  const lights = Array.from({ length: lightCount }, createLight)
+  let lights = []
+  let currentW = 0
+  let currentH = 0
 
-  function resize() {
+  function applyCanvasSize(w, h) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2)
-    canvas.width = window.innerWidth * dpr
-    canvas.height = window.innerHeight * dpr
-    canvas.style.width = `${window.innerWidth}px`
-    canvas.style.height = `${window.innerHeight}px`
+    canvas.width = w * dpr
+    canvas.height = h * dpr
+    canvas.style.width = `${w}px`
+    canvas.style.height = `${h}px`
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
   }
 
-  if (reduceMotion) {
+  function drawStatic() {
+    ctx.clearRect(0, 0, currentW, currentH)
     lights.forEach((light) => {
-      light.staticAlpha = light.maxAlpha * randomBetween(0.35, 0.9)
+      ctx.beginPath()
+      ctx.fillStyle = `rgba(${light.color}, ${light.staticAlpha})`
+      ctx.arc(light.xf * currentW, light.yf * currentH, light.r, 0, Math.PI * 2)
+      ctx.fill()
     })
-
-    const drawStatic = () => {
-      const w = window.innerWidth
-      const h = window.innerHeight
-      ctx.clearRect(0, 0, w, h)
-      lights.forEach((light) => {
-        ctx.beginPath()
-        ctx.fillStyle = `rgba(${light.color}, ${light.staticAlpha})`
-        ctx.arc(light.xf * w, light.yf * h, light.r, 0, Math.PI * 2)
-        ctx.fill()
-      })
-    }
-
-    resize()
-    drawStatic()
-    window.addEventListener('resize', () => {
-      resize()
-      drawStatic()
-    })
-    return
   }
 
+  function regenerate() {
+    const { w, h } = pageSize()
+    currentW = w
+    currentH = h
+    applyCanvasSize(w, h)
+
+    const count = lightCountFor(w, h)
+    lights = Array.from({ length: count }, createLight)
+
+    if (reduceMotion) {
+      lights.forEach((light) => {
+        light.staticAlpha = light.maxAlpha * randomBetween(0.35, 0.9)
+      })
+      drawStatic()
+    }
+  }
+
+  regenerate()
+
+  let regenTimer = null
+  function scheduleRegenerate() {
+    clearTimeout(regenTimer)
+    regenTimer = setTimeout(() => {
+      const { w, h } = pageSize()
+      if (w === currentW && h === currentH) return
+      regenerate()
+    }, 200)
+  }
+
+  window.addEventListener('resize', scheduleRegenerate)
+  if (typeof ResizeObserver === 'function') {
+    new ResizeObserver(scheduleRegenerate).observe(document.documentElement)
+  }
+
+  if (reduceMotion) return
+
   function draw(t) {
-    const w = window.innerWidth
-    const h = window.innerHeight
-    ctx.clearRect(0, 0, w, h)
+    const scrollY = window.scrollY
+    const viewTop = scrollY - 60
+    const viewBottom = scrollY + window.innerHeight + 60
+
+    ctx.clearRect(0, viewTop, currentW, viewBottom - viewTop)
 
     lights.forEach((light) => {
+      const y = light.yf * currentH
+      if (y < viewTop || y > viewBottom) return
+
       const alpha = alphaFor(light, t)
       if (alpha <= 0.01) return
 
-      const x = light.xf * w
-      const y = light.yf * h
+      const x = light.xf * currentW
       ctx.beginPath()
       ctx.fillStyle = `rgba(${light.color}, ${alpha})`
       ctx.shadowColor = `rgba(${light.color}, ${alpha * 0.8})`
@@ -105,14 +141,9 @@ export function initBgLights() {
       ctx.arc(x, y, light.r, 0, Math.PI * 2)
       ctx.fill()
     })
+
+    requestAnimationFrame(draw)
   }
 
-  resize()
-  window.addEventListener('resize', resize)
-
-  function loop(t) {
-    draw(t)
-    requestAnimationFrame(loop)
-  }
-  requestAnimationFrame(loop)
+  requestAnimationFrame(draw)
 }

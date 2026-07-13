@@ -379,14 +379,14 @@ h3 {
   filter: grayscale(0.15) contrast(1.02);
 }
 
-.about__media::after {
+/* .about__media::after {
   content: '';
   position: absolute;
   inset: 0;
   box-shadow: inset 0 -80px 80px -40px var(--bg);
   border-radius: 3px;
   pointer-events: none;
-}
+} */
 
 .about__title {
   font-size: var(--fs-h2);
@@ -607,7 +607,20 @@ html.js .reveal.is-visible {
 
 .career__main--reverse {
   grid-template-columns: 0.7fr 1.3fr;
-  align-items: start;
+  align-items: stretch;
+}
+
+.career__main--reverse .career__photos {
+  position: relative;
+  overflow: hidden;
+}
+
+.career__main--reverse .career__photos img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .timeline {
@@ -627,6 +640,7 @@ html.js .reveal.is-visible {
 
 .tl--plain {
   grid-template-columns: 1fr;
+  padding: var(--sp-1) 0;
 }
 
 .tl:last-child {

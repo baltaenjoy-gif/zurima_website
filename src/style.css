@@ -914,11 +914,30 @@ html.js .reveal.is-visible {
     position: absolute;
     inset: -8% -12%;
     z-index: -1;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    background: rgba(13, 13, 13, 0.16);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(13, 13, 13, 0.06);
     -webkit-mask-image: radial-gradient(ellipse 85% 80% at 42% 68%, #000 45%, transparent 92%);
     mask-image: radial-gradient(ellipse 85% 80% at 42% 68%, #000 45%, transparent 92%);
+    pointer-events: none;
+  }
+
+  .btn {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: -10px -14px;
+    z-index: -1;
+    border-radius: 6px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(13, 13, 13, 0.2);
+    -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 65%, transparent 100%);
+    mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 65%, transparent 100%);
     pointer-events: none;
   }
 

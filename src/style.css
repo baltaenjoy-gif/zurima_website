@@ -594,6 +594,10 @@ html.js .reveal.is-visible {
   margin-bottom: var(--sp-12);
 }
 
+.career__main--reverse {
+  grid-template-columns: 0.7fr 1.3fr;
+}
+
 .timeline {
   list-style: none;
   display: flex;
@@ -645,9 +649,18 @@ html.js .reveal.is-visible {
 }
 
 .career__extra {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.career__extra > div {
+  padding: var(--sp-4) 0;
+  border-top: 1px solid var(--line);
+}
+
+.career__extra > div:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
 .career__subtitle {

@@ -14,7 +14,8 @@ function createLight() {
   return {
     xf: Math.random(),
     yf: Math.random(),
-    r: randomBetween(0.8, 2.4),
+    r: randomBetween(1.6, 4),
+    rotation: randomBetween(0, Math.PI / 2),
     maxAlpha: randomBetween(0.45, 1),
     color: Math.random() < 0.75 ? GOLD : WARM_WHITE,
     offDur,
@@ -24,6 +25,22 @@ function createLight() {
     cycle: offDur + fadeInDur + onDur + fadeOutDur,
     phase: Math.random() * (offDur + fadeInDur + onDur + fadeOutDur),
   }
+}
+
+function drawSparkle(ctx, x, y, outerR, rotation, color, alpha) {
+  const innerR = outerR * 0.32
+  ctx.beginPath()
+  for (let i = 0; i < 8; i++) {
+    const angle = rotation + (Math.PI / 4) * i
+    const r = i % 2 === 0 ? outerR : innerR
+    const px = x + Math.cos(angle) * r
+    const py = y + Math.sin(angle) * r
+    if (i === 0) ctx.moveTo(px, py)
+    else ctx.lineTo(px, py)
+  }
+  ctx.closePath()
+  ctx.fillStyle = `rgba(${color}, ${alpha})`
+  ctx.fill()
 }
 
 function alphaFor(light, t) {
@@ -76,10 +93,15 @@ export function initBgLights() {
   function drawStatic() {
     ctx.clearRect(0, 0, currentW, currentH)
     lights.forEach((light) => {
-      ctx.beginPath()
-      ctx.fillStyle = `rgba(${light.color}, ${light.staticAlpha})`
-      ctx.arc(light.xf * currentW, light.yf * currentH, light.r, 0, Math.PI * 2)
-      ctx.fill()
+      drawSparkle(
+        ctx,
+        light.xf * currentW,
+        light.yf * currentH,
+        light.r,
+        light.rotation,
+        light.color,
+        light.staticAlpha
+      )
     })
   }
 
@@ -134,12 +156,9 @@ export function initBgLights() {
       if (alpha <= 0.01) return
 
       const x = light.xf * currentW
-      ctx.beginPath()
-      ctx.fillStyle = `rgba(${light.color}, ${alpha})`
       ctx.shadowColor = `rgba(${light.color}, ${alpha * 0.8})`
-      ctx.shadowBlur = light.r * 4
-      ctx.arc(x, y, light.r, 0, Math.PI * 2)
-      ctx.fill()
+      ctx.shadowBlur = light.r * 3
+      drawSparkle(ctx, x, y, light.r, light.rotation, light.color, alpha)
     })
 
     requestAnimationFrame(draw)

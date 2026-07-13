@@ -251,7 +251,6 @@ h3 {
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  box-shadow: 0 0 160px 20px rgba(234, 189, 101, 0.4);
 }
 
 .hero__media img {
@@ -493,10 +492,10 @@ html.js .reveal.is-visible {
 
 .editorial-band__caption {
   position: absolute;
-  left: 50%;
-  bottom: var(--sp-8);
-  transform: translateX(-50%);
-  text-align: center;
+  left: 68%;
+  top: 58%;
+  transform: translateY(-50%);
+  text-align: left;
   font-family: var(--font-display);
   font-weight: 500;
   font-size: var(--fs-caption);

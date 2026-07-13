@@ -290,6 +290,8 @@ h3 {
 }
 
 .marquee {
+  position: relative;
+  display: inline-block;
   font-size: var(--fs-hero);
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -303,6 +305,21 @@ h3 {
   background-clip: text;
   color: transparent;
   filter: drop-shadow(0 4px 30px rgba(234, 189, 101, 0.22));
+}
+
+.marquee::after {
+  content: '';
+  position: absolute;
+  top: -25%;
+  bottom: -25%;
+  left: -15%;
+  width: 10%;
+  background: linear-gradient(90deg, transparent, rgba(255, 244, 214, 0.55), transparent);
+  filter: blur(20px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: marquee-shine-outer 4s ease-in-out 1.2s infinite;
 }
 
 .hero__tagline {
@@ -376,6 +393,27 @@ h3 {
   }
   100% {
     background-position: -120% 0, 0 0;
+  }
+}
+
+@keyframes marquee-shine-outer {
+  0% {
+    left: -15%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  85% {
+    left: 105%;
+    opacity: 0;
+  }
+  100% {
+    left: 105%;
+    opacity: 0;
   }
 }
 
@@ -884,7 +922,8 @@ html.js .reveal.is-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee {
+  .marquee,
+  .marquee::after {
     animation: none;
   }
 }

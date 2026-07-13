@@ -42,9 +42,8 @@
   --dur: 320ms;
 
   /* Scrim de legibilidad sobre las luces de fondo */
-  --scrim: rgba(13, 13, 13, 0.42);
-  --scrim-spread: clamp(0.6rem, 2vw, 1.1rem);
-  --scrim-radius: 6px;
+  --scrim: rgba(13, 13, 13, 0.55);
+  --scrim-blur: clamp(1.5rem, 4vw, 3rem);
 }
 
 *,
@@ -86,8 +85,7 @@ body {
 .hl,
 .tl__body,
 .footer {
-  box-shadow: 0 0 0 var(--scrim-spread) var(--scrim);
-  border-radius: var(--scrim-radius);
+  box-shadow: 0 0 var(--scrim-blur) 0 var(--scrim);
 }
 
 img {
@@ -253,7 +251,6 @@ h3 {
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  box-shadow: 0 0 140px 30px rgba(234, 189, 101, 0.32);
 }
 
 .hero__media img {
@@ -356,7 +353,7 @@ h3 {
 }
 
 .marquee {
-  animation: marquee-glint 1100ms var(--ease) 200ms both, marquee-shine 4s ease-in-out 1.2s infinite;
+  animation: marquee-glint 1100ms var(--ease) 200ms both, marquee-shine 6.5s ease-in-out 1.2s infinite;
 }
 
 @keyframes marquee-glint {
@@ -412,7 +409,7 @@ h3 {
   width: 100%;
   border-radius: 3px;
   filter: grayscale(0.15) contrast(1.02);
-  box-shadow: 0 0 70px 6px rgba(234, 189, 101, 0.28);
+  box-shadow: 0 0 36px 0 rgba(234, 189, 101, 0.18);
 }
 
 /* .about__media::after {
@@ -707,7 +704,7 @@ html.js .reveal.is-visible {
   display: grid;
   gap: var(--sp-3);
   border-radius: 3px;
-  box-shadow: 0 0 70px 6px rgba(234, 189, 101, 0.28);
+  box-shadow: 0 0 36px 0 rgba(234, 189, 101, 0.18);
 }
 
 .career__photos img {

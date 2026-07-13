@@ -323,6 +323,7 @@ h3 {
 }
 
 .btn {
+  position: relative;
   display: inline-block;
   margin-top: var(--sp-4);
   padding: 0.85em 2.4em;
@@ -335,6 +336,11 @@ h3 {
   border: 1px solid var(--gold);
   border-radius: 2px;
   transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.hero__blur,
+.btn__blur {
+  display: none;
 }
 
 .btn:hover {
@@ -904,41 +910,41 @@ html.js .reveal.is-visible {
 
   .hero__content {
     position: relative;
-    isolation: isolate;
     box-shadow: none;
     padding-block: 0 var(--sp-6);
   }
 
-  .hero__content::before {
-    content: '';
+  .hero__content > :not(.hero__blur) {
+    position: relative;
+  }
+
+  .hero__blur {
+    display: block;
     position: absolute;
     top: -38%;
     bottom: 0;
     left: calc(-1 * var(--gutter));
     right: calc(-1 * var(--gutter));
-    z-index: -1;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    background: rgba(13, 13, 13, 0.06);
-    -webkit-mask-image: radial-gradient(ellipse 145% 130% at 105% 108%, #000 45%, transparent 100%);
-    mask-image: radial-gradient(ellipse 145% 130% at 105% 108%, #000 45%, transparent 100%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background: rgba(13, 13, 13, 0.14);
+    clip-path: polygon(0% 17%, 20% 44%, 40% 61%, 60% 75%, 80% 88%, 100% 100%, 0% 100%);
+    -webkit-clip-path: polygon(0% 17%, 20% 44%, 40% 61%, 60% 75%, 80% 88%, 100% 100%, 0% 100%);
     pointer-events: none;
   }
 
-  .btn {
+  .btn__label {
     position: relative;
-    isolation: isolate;
   }
 
-  .btn::before {
-    content: '';
+  .btn__blur {
+    display: block;
     position: absolute;
     inset: -4px -8px;
-    z-index: -1;
     border-radius: 4px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: rgba(13, 13, 13, 0.3);
+    background: rgba(13, 13, 13, 0.32);
     pointer-events: none;
   }
 

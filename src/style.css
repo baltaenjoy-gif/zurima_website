@@ -912,7 +912,7 @@ html.js .reveal.is-visible {
   .hero__content::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -38%;
     bottom: 0;
     left: calc(-1 * var(--gutter));
     right: calc(-1 * var(--gutter));
@@ -920,8 +920,8 @@ html.js .reveal.is-visible {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     background: rgba(13, 13, 13, 0.06);
-    -webkit-mask-image: radial-gradient(ellipse 90% 65% at 50% 115%, #000 55%, transparent 100%);
-    mask-image: radial-gradient(ellipse 90% 65% at 50% 115%, #000 55%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 145% 130% at 105% 108%, #000 45%, transparent 100%);
+    mask-image: radial-gradient(ellipse 145% 130% at 105% 108%, #000 45%, transparent 100%);
     pointer-events: none;
   }
 
@@ -933,14 +933,12 @@ html.js .reveal.is-visible {
   .btn::before {
     content: '';
     position: absolute;
-    inset: -3px -6px;
+    inset: -4px -8px;
     z-index: -1;
     border-radius: 4px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    background: rgba(13, 13, 13, 0.22);
-    -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 70%, transparent 100%);
-    mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, #000 70%, transparent 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(13, 13, 13, 0.3);
     pointer-events: none;
   }
 

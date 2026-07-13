@@ -231,11 +231,11 @@ h3 {
 
 .hero__media img {
   position: absolute;
-  width: 155%;
+  width: 137.8%;
   max-width: none;
-  height: 155%;
-  top: -21%;
-  left: -22%;
+  height: 128%;
+  top: -4.24%;
+  left: -36.77%;
   object-fit: cover;
 }
 

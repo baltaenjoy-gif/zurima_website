@@ -401,6 +401,10 @@ h3 {
   padding: var(--sp-16) var(--gutter);
 }
 
+.about__kicker--mobile {
+  display: none;
+}
+
 .about__media {
   position: relative;
 }
@@ -831,6 +835,14 @@ html.js .reveal.is-visible {
     margin-bottom: var(--sp-8);
   }
 
+  .career__main:not(.career__main--reverse) > .timeline {
+    order: 2;
+  }
+
+  .career__main:not(.career__main--reverse) > .career__photos {
+    order: 1;
+  }
+
   .tl {
     grid-template-columns: 1fr;
     gap: var(--sp-1);
@@ -865,6 +877,15 @@ html.js .reveal.is-visible {
     padding-block: var(--sp-8);
   }
 
+  .about__kicker--mobile {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .about__kicker--desktop {
+    display: none;
+  }
+
   .about__media {
     max-width: 22rem;
   }
@@ -882,7 +903,7 @@ html.js .reveal.is-visible {
   }
 
   .hero__content {
-    --scrim: rgba(13, 13, 13, 0.28);
+    box-shadow: none;
     padding-block: 0 var(--sp-6);
   }
 

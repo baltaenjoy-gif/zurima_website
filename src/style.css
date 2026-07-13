@@ -823,15 +823,36 @@ html.js .reveal.is-visible {
 @media (max-width: 760px) {
   .hero {
     grid-template-columns: 1fr;
+    align-items: end;
   }
 
   .career__main {
     grid-template-columns: 1fr;
+    margin-bottom: var(--sp-8);
   }
 
   .tl {
     grid-template-columns: 1fr;
     gap: var(--sp-1);
+  }
+
+  .timeline {
+    padding-left: 0;
+  }
+
+  .edu__item {
+    padding-left: var(--sp-3);
+  }
+
+  .career__main--reverse .career__photos {
+    position: static;
+    overflow: visible;
+  }
+
+  .career__main--reverse .career__photos img {
+    position: static;
+    width: 100%;
+    height: auto;
   }
 
   .topbar__nav {
@@ -841,11 +862,15 @@ html.js .reveal.is-visible {
   .about {
     grid-template-columns: 1fr;
     gap: var(--sp-6);
-    padding-block: var(--sp-12);
+    padding-block: var(--sp-8);
   }
 
   .about__media {
     max-width: 22rem;
+  }
+
+  .pull-quote {
+    margin-top: var(--sp-3);
   }
 
   .hero__media {
@@ -854,13 +879,13 @@ html.js .reveal.is-visible {
 
   .hero__media img {
     object-position: center 25%;
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), #000 70%);
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), #000 70%);
-    opacity: 0.55;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), #000 65%);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.15), #000 65%);
   }
 
   .hero__content {
-    padding-block: var(--sp-16) var(--sp-12);
+    --scrim: rgba(13, 13, 13, 0.28);
+    padding-block: 0 var(--sp-6);
   }
 
   .hero__tagline {
@@ -873,7 +898,42 @@ html.js .reveal.is-visible {
   }
 
   .hero__scroll {
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+    display: none;
+  }
+
+  .editorial-band {
+    margin-block: var(--sp-4);
+  }
+
+  .editorial-band__caption {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    text-align: center;
+    margin-top: var(--sp-2);
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    white-space: nowrap;
+  }
+
+  .music {
+    padding: var(--sp-6) var(--gutter) var(--sp-8);
+  }
+
+  .career {
+    padding: var(--sp-8) var(--gutter);
+  }
+
+  .highlights {
+    flex-wrap: nowrap;
+    gap: var(--sp-3);
+    justify-content: space-between;
+    margin-bottom: var(--sp-8);
+  }
+
+  .hl__value {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
   }
 }
 

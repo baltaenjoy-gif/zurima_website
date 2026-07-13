@@ -64,6 +64,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.bg-lights {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+}
+
 img {
   display: block;
   max-width: 100%;

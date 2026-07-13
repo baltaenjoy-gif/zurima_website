@@ -3,6 +3,7 @@ import { getLang, setLang, applyI18n, pick } from './i18n.js'
 import { content } from './data/content.js'
 import { buildSlider, playVideo } from './video-slider.js'
 import { initReveal } from './reveal.js'
+import { initBgLights } from './bg-lights.js'
 
 function markActiveLang() {
   const lang = getLang()
@@ -91,6 +92,7 @@ initSmoothAnchors()
 initVideoSlider()
 
 initReveal(document.querySelectorAll('.reveal'))
+initBgLights()
 
 const yearEl = document.getElementById('footer-year')
 if (yearEl) yearEl.textContent = String(new Date().getFullYear())

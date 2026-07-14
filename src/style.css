@@ -323,7 +323,6 @@ h3 {
 }
 
 .btn {
-  position: relative;
   display: inline-block;
   margin-top: var(--sp-4);
   padding: 0.85em 2.4em;
@@ -338,8 +337,7 @@ h3 {
   transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 
-.hero__blur,
-.btn__blur {
+.hero__blur {
   display: none;
 }
 
@@ -925,27 +923,37 @@ html.js .reveal.is-visible {
     bottom: 0;
     left: calc(-1 * var(--gutter));
     right: calc(-1 * var(--gutter));
+    pointer-events: none;
+  }
+
+  .hero__blur--1 {
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    background: rgba(13, 13, 13, 0.04);
+    clip-path: polygon(0% 3%, 20% 30%, 40% 47%, 60% 61%, 80% 74%, 100% 86%, 100% 100%, 0% 100%);
+    -webkit-clip-path: polygon(0% 3%, 20% 30%, 40% 47%, 60% 61%, 80% 74%, 100% 86%, 100% 100%, 0% 100%);
+  }
+
+  .hero__blur--2 {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    background: rgba(13, 13, 13, 0.08);
+    clip-path: polygon(0% 10%, 20% 37%, 40% 54%, 60% 68%, 80% 81%, 100% 93%, 100% 100%, 0% 100%);
+    -webkit-clip-path: polygon(0% 10%, 20% 37%, 40% 54%, 60% 68%, 80% 81%, 100% 93%, 100% 100%, 0% 100%);
+  }
+
+  .hero__blur--3 {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    background: rgba(13, 13, 13, 0.14);
+    background: rgba(13, 13, 13, 0.13);
     clip-path: polygon(0% 17%, 20% 44%, 40% 61%, 60% 75%, 80% 88%, 100% 100%, 0% 100%);
     -webkit-clip-path: polygon(0% 17%, 20% 44%, 40% 61%, 60% 75%, 80% 88%, 100% 100%, 0% 100%);
-    pointer-events: none;
   }
 
-  .btn__label {
-    position: relative;
-  }
-
-  .btn__blur {
-    display: block;
-    position: absolute;
-    inset: -4px -8px;
-    border-radius: 4px;
+  .btn {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background: rgba(13, 13, 13, 0.32);
-    pointer-events: none;
+    background: rgba(13, 13, 13, 0.3);
   }
 
   .hero__tagline {
